@@ -1,8 +1,10 @@
 import { Component } from "react";
+import { nanoid } from "nanoid";
 import './TaskList.css'
 
 class TaskList extends Component {
     state = {
+        inputUrl: "",
         tasks: [
             {
             id: 0, 
@@ -39,17 +41,44 @@ class TaskList extends Component {
         })
     }
 
+    handleInp = (event) => {
+        this.setState({
+            inputUrl: event.target.value
+        })
+    }
+
+    handleAdd = () => {
+        if (this.state.inputUrl === "") {
+            return
+        } else {
+            const nevTask = {
+                id: nanoid(),
+                img: this.state.inputUrl
+            }
+            this.setState({
+                tasks: [...this.state.tasks, nevTask]
+            })
+        }
+    }
+
   render() {
 
     return (
-        <ul className="task-list">
-            {this.state.tasks.map(({id, img}) => (
-                <li key={id} className="task-item">
-                    <img className="task-image" src={img} alt="Task" />
-                    <button className="remove-button" type="button" onClick={() => this.hendleRemove(id)}>Remove</button>
-                </li>
-            ))}
-        </ul>
+        <>
+            <div className="input-container">
+                <input type="url" value={this.state.inputUrl} onChange={this.handleInp} className="task-input" />
+                <button type="button" onClick={this.handleAdd} className="add-button">add image</button>
+            </div>
+            
+            <ul className="task-list">
+                {this.state.tasks.map(({id, img}) => (
+                    <li key={id} className="task-item">
+                        <img className="task-image" src={img} alt="Task" />
+                        <button className="remove-button" type="button" onClick={() => this.hendleRemove(id)}>Remove</button>
+                    </li>
+                ))}
+            </ul>
+        </>
     )
   }
 }

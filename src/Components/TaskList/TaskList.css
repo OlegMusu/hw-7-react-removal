@@ -13,6 +13,41 @@
     align-items: center;
 }
 
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.task-input {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 5px;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-button {
+    width: 100px;
+    padding: 6px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
 .task-image {
     width: 300px;
     height: 300px;
@@ -25,10 +60,12 @@
     color: white;
     border: none;
     padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .remove-button:hover {
     background-color: #ff2f2f;
+    transform: scale(1.05);
 }
